@@ -1,4 +1,6 @@
 using DependencyInjection;
+using Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHexagonalServices();
+builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer("Server=<localhost>;Database=<TemplateHexagonaAPIDB>;User=<sa>;Password=<Password1>"));
 
 
 var app = builder.Build();
