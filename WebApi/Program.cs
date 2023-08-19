@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHexagonalServices();
 builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer("Server=<localhost>;Database=<TemplateHexagonaAPIDB>;User=<sa>;Password=<Password1>"));
+                options.UseSqlServer("Server=localhost;Database=TemplateHexagonaAPIDB;User id=sa;Password=Password1;TrustServerCertificate=True;"));
 
 
 var app = builder.Build();
