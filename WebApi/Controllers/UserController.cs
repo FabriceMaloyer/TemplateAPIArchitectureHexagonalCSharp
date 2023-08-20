@@ -18,7 +18,8 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpGet(Name = "GetAllUser")]
+        [HttpGet]
+        [Route("GetAllUser")]
         public List<UserApi> GetAllUser()
         {
             List<User> users = _userApplication.GetAllUser();
@@ -31,7 +32,8 @@ namespace WebApi.Controllers
             return result;
         }
 
-        [HttpGet("{id}", Name = "GetUserById")]
+        [HttpGet]
+        [Route("GetUserById")]
         public UserApi GetUserById(Guid id)
         {
             User user = _userApplication.GetUserById(id);
@@ -39,7 +41,8 @@ namespace WebApi.Controllers
             return UserApi.ConvertToApiModel(user);
         }
 
-        [HttpPost(Name = "AddUser")]
+        [HttpPost]
+        [Route("AddUser")]
         public HttpStatusCode AddUser(User user)
         {
 
