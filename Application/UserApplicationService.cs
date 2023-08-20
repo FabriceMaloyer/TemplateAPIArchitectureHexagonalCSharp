@@ -1,13 +1,21 @@
-﻿using Application.Interface;
+﻿
+using Application.InterfaceQuery;
 using Domain.Model;
 
 namespace Application
 {
     public class UserApplicationService : IUserApplication
     {
+        private readonly IUserRepository _userRepository;
+
+        public UserApplicationService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
         public List<User> GetAllUser()
         {
-            throw new NotImplementedException();
+            return _userRepository.GetAllUser();
         }
 
         public User GetUserById(Guid id)

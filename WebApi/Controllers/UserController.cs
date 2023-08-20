@@ -1,4 +1,4 @@
-﻿using Application.Interface;
+﻿using Application.InterfaceQuery;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;

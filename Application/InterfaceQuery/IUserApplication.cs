@@ -1,6 +1,6 @@
 ﻿using Domain.Model;
 
-namespace Application.Interface
+namespace Application.InterfaceQuery
 {
     public interface IUserApplication
     {

@@ -1,5 +1,6 @@
 ﻿using Application;
-using Application.Interface;
+using Application.InterfaceQuery;
+using Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DependencyInjection
@@ -10,6 +11,7 @@ namespace DependencyInjection
         {
             // Register your application services
             services.AddScoped<IUserApplication, UserApplicationService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             // Add more registrations here
 

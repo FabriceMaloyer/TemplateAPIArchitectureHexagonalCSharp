@@ -12,7 +12,10 @@ namespace WebApi.Model
         public static UserApi ConvertToApiModel(User user)
         {
             UserApi userApi = new UserApi();
-
+            userApi.Id = user.Id;
+            userApi.Name = user.Name;
+            userApi.Email = user.Email;
+            userApi.Password = user.Password;
             return userApi;
         }
 

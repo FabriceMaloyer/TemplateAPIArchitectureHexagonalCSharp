@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Infrastructure.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {
