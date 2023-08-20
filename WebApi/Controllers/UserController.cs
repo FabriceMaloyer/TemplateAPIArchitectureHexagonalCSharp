@@ -1,6 +1,7 @@
 ﻿using Application.InterfaceQuery;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using WebApi.Model;
 
 namespace WebApi.Controllers
@@ -36,6 +37,21 @@ namespace WebApi.Controllers
             User user = _userApplication.GetUserById(id);
 
             return UserApi.ConvertToApiModel(user);
+        }
+
+        [HttpPost(Name = "AddUser")]
+        public HttpStatusCode AddUser(User user)
+        {
+
+            try
+            {
+                bool result = _userApplication.CreateUser(user);
+                return HttpStatusCode.Created;
+            }
+            catch (Exception ex)
+            {
+                return HttpStatusCode.Forbidden;
+            }
         }
     }
 }

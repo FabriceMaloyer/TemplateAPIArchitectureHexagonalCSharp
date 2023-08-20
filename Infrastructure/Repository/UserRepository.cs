@@ -1,4 +1,6 @@
 ﻿using Application.InterfaceQuery;
+using User = Infrastructure.Model.User;
+using UserModel = Domain.Model.User;
 
 namespace Infrastructure.Repository
 {
@@ -10,19 +12,35 @@ namespace Infrastructure.Repository
             _context = context;
         }
 
-        public List<Domain.Model.User> GetAllUser()
+        public bool CreateUser(UserModel user)
         {
-            List<Model.User> dbresponse = _context.Users.ToList();
-            List<Domain.Model.User> requestresponse = new List<Domain.Model.User>();
+            _context.Add(User.ToRepos(user));
+            try
+            {
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+
+        }
+
+        public List<UserModel> GetAllUser()
+        {
+            List<User> dbresponse = _context.Users.ToList();
+            List<UserModel> requestresponse = new List<UserModel>();
 
             foreach (var user in dbresponse)
             {
-                requestresponse.Add(Model.User.ToModel(user));
+                requestresponse.Add(User.ToModel(user));
             }
             return requestresponse;
         }
 
-        public Domain.Model.User GetUserById(Guid id)
+        public UserModel GetUserById(Guid id)
         {
             return Model.User.ToModel(_context.Users.FirstOrDefault(a => a.Id == id) ?? new Model.User());
         }

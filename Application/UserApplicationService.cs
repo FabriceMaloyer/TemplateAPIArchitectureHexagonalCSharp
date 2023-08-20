@@ -13,6 +13,11 @@ namespace Application
             _userRepository = userRepository;
         }
 
+        public bool CreateUser(User user)
+        {
+            return _userRepository.CreateUser(user);
+        }
+
         public List<User> GetAllUser()
         {
             return _userRepository.GetAllUser();
@@ -20,7 +25,7 @@ namespace Application
 
         public User GetUserById(Guid id)
         {
-            throw new NotImplementedException();
+            return _userRepository.GetUserById(id);
         }
     }
 }
