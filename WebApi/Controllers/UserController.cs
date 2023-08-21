@@ -56,5 +56,36 @@ namespace WebApi.Controllers
                 return HttpStatusCode.Forbidden;
             }
         }
+
+        [HttpPost]
+        [Route("DeleteUser")]
+        public HttpStatusCode DeleteUser(Guid id)
+        {
+            try
+            {
+                bool result = _userApplication.DeleteUser(id);
+                return HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                return HttpStatusCode.Forbidden;
+            }
+        }
+
+        [HttpPost]
+        [Route("UpdateUser")]
+        public HttpStatusCode UpdateUser(User user)
+        {
+            try
+            {
+                bool result = _userApplication.UpdateUser(user);
+                return HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                return HttpStatusCode.Forbidden;
+            }
+        }
+
     }
 }

@@ -13,7 +13,7 @@ namespace Infrastructure.Model
         {
             User response = new User();
 
-            response.Id = user.Id;
+            response.Id = (Guid)user.Id;
             response.Name = user.Name;
             response.Email = user.Email;
             response.Password = user.Password;

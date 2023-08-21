@@ -18,6 +18,11 @@ namespace Application
             return _userRepository.CreateUser(user);
         }
 
+        public bool DeleteUser(Guid id)
+        {
+            return _userRepository.DeleteUser(id);
+        }
+
         public List<User> GetAllUser()
         {
             return _userRepository.GetAllUser();
@@ -26,6 +31,11 @@ namespace Application
         public User GetUserById(Guid id)
         {
             return _userRepository.GetUserById(id);
+        }
+
+        public bool UpdateUser(User user)
+        {
+            return _userRepository.UpdateUser(user);
         }
     }
 }

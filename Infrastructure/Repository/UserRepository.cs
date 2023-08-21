@@ -14,6 +14,7 @@ namespace Infrastructure.Repository
 
         public bool CreateUser(UserModel user)
         {
+            user.Id = Guid.NewGuid();
             _context.Add(User.ToRepos(user));
             try
             {
@@ -24,8 +25,21 @@ namespace Infrastructure.Repository
             {
                 return false;
             }
+        }
 
+        public bool DeleteUser(Guid id)
+        {
+            _context.Users.Remove(_context.Users.First(a => a.Id == id));
 
+            try
+            {
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public List<UserModel> GetAllUser()
@@ -43,6 +57,25 @@ namespace Infrastructure.Repository
         public UserModel GetUserById(Guid id)
         {
             return Model.User.ToModel(_context.Users.FirstOrDefault(a => a.Id == id) ?? new Model.User());
+        }
+
+        public bool UpdateUser(UserModel user)
+        {
+            var newUser = _context.Users.First(a => a.Id == user.Id);
+            newUser.Name = user.Name;
+            newUser.Email = user.Email;
+            newUser.Password = user.Password;
+
+            _context.Update(newUser);
+            try
+            {
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
