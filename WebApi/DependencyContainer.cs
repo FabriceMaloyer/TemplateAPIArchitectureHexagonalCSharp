@@ -1,9 +1,8 @@
 ﻿using Application;
 using Application.InterfaceQuery;
 using Infrastructure.Repository;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace DependencyInjection
+namespace WebApi
 {
     public static class DependencyContainer
     {
