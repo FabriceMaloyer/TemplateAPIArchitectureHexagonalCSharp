@@ -28,6 +28,11 @@ namespace Application
             return _userRepository.GetAllUser();
         }
 
+        public bool GetConnection(User user)
+        {
+            return _userRepository.GetConnexion(user);
+        }
+
         public User GetUserById(Guid id)
         {
             return _userRepository.GetUserById(id);

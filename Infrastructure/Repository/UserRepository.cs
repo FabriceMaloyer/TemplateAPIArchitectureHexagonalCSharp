@@ -54,6 +54,14 @@ namespace Infrastructure.Repository
             return requestresponse;
         }
 
+        public bool GetConnexion(UserModel user)
+        {
+            var result = _context.Users.FirstOrDefault(a => a.Name == user.Name && a.Password == user.Password);
+            if (result == null)
+                return false;
+            return true;
+        }
+
         public UserModel GetUserById(Guid id)
         {
             return Model.User.ToModel(_context.Users.FirstOrDefault(a => a.Id == id) ?? new Model.User());

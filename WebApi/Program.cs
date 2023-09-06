@@ -13,6 +13,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHexagonalServices();
 builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer("Server=localhost;Database=TemplateHexagonaAPIDB;User id=sa;Password=Password1;TrustServerCertificate=True;"));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost", builder =>
+    {
+        builder
+            .WithOrigins("http://localhost:3000") // Replace with your React app's URL
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 
 var app = builder.Build();
@@ -25,7 +35,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowLocalhost");
 app.UseAuthorization();
 
 app.MapControllers();

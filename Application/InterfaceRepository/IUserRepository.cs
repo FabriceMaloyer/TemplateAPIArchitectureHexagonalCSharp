@@ -9,5 +9,6 @@ namespace Application.InterfaceQuery
         bool CreateUser(User user);
         bool UpdateUser(User user);
         bool DeleteUser(Guid id);
+        bool GetConnexion(User user);
     }
 }

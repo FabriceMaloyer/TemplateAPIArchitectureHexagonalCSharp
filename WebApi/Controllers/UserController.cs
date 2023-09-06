@@ -42,6 +42,15 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [Route("connect")]
+        public bool GetConnection(User user)
+        {
+            bool response = _userApplication.GetConnection(user);
+
+            return response;
+        }
+
+        [HttpPost]
         [Route("AddUser")]
         public HttpStatusCode AddUser(User user)
         {
